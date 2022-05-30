@@ -131,7 +131,7 @@ main {
 	justify-content: space-around;
 	flex-wrap: wrap;
 }
-.items a {
+.itemsA {
 	width: 21%;
 	text-decoration: none;
 	color: unset;
@@ -139,7 +139,7 @@ main {
 .items a:hover article {
 	box-shadow: rgba(42, 18, 206, 0.9) 0 0 22px 6px;
 }
-.items article {
+.itemsArticle {
 	background-color: var(--secondary-color);
 	display: flex;
 	flex-direction: column;
@@ -149,19 +149,19 @@ main {
 	width: 100%;
 	border-radius: 10px;
 }
-.items article img {
+.itemsArticleImg {
 	width: 160px;
 	height: 160px;
 	object-fit: cover;
 	border-radius: 10px;
 }
-.items article h3 {
+.itemsArticleH3 {
 	font-size: 22px;
 	font-weight: 700;
 	text-align: center;
 	text-transform: uppercase;
 }
-.items article p {
+.itemsArticleP {
 	text-align: center;
 	padding-left: 23px;
 	padding-right: 23px;
