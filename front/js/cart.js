@@ -22,6 +22,30 @@ function displayItem(item) {
     article.appendChild(cartItemContent)
     
     displayArticle(article)
+    displayTotalPrice()
+    displayTotalQuantity()
+    
+}
+
+function displayTotalPrice() {
+    let total = 0
+    const totalPrice = document.querySelector("#totalPrice")
+
+    cart.forEach(item => {
+    const priceAdd = item.price * item.quantity
+    total = priceAdd + total
+    })
+    totalPrice.textContent = total
+}
+
+function displayTotalQuantity() {
+    total = 0
+    const totalQuantity = document.querySelector("#totalQuantity")
+     cart.forEach(item => {
+         const quantityAdd = item.quantity
+         total = quantityAdd + total
+     })
+     totalQuantity.textContent = total
 }
 
 function makeCartContent(item) {
@@ -40,10 +64,20 @@ function makeCartContent(item) {
 
 function makeSettings(item) {
     const settings = document.createElement("div")
-    settings.classList.add("cart__item__content_settings")
+    settings.classList.add("cart__item__content__settings")
 
     addQuantityToSettings(settings, item)
+    addDeleteToSettings(settings)
     return settings
+}
+
+function addDeleteToSettings(settings) {
+    const div = document.createElement("div")
+    div.classList.add("cart__item__content__settings__delete")
+    const p = document.createElement("p")
+    p.textContent = "Supprimer"
+    div.appendChild(p)
+    settings.appendChild(div)
 }
 
 function addQuantityToSettings(settings, item) {
@@ -53,13 +87,15 @@ function addQuantityToSettings(settings, item) {
     p.textContent = "Qté : "
     quantity.appendChild(p)
     const input = document.createElement("input")
-    input.type = "number"
     input.classList.add("itemQuantity")
+    input.type = "number"
     input.name = "itemQuantity"
     input.min = "1"
     input.max = "100"
     input.value = item.quantity
-    settings.appendChild(input)
+    
+    quantity.appendChild(input)
+    settings.appendChild(quantity)
 }
 
 function makeDescription(item) {
