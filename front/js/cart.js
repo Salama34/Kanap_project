@@ -93,9 +93,26 @@ function addQuantityToSettings(settings, item) {
     input.min = "1"
     input.max = "100"
     input.value = item.quantity
+    input.addEventListener("input",() => updatePriceQuantity(item.id, input.value, item))
     
     quantity.appendChild(input)
     settings.appendChild(quantity)
+}
+
+function updatePriceQuantity(id, newValue, item) {
+    const updateItem = cart.find((item) => item.id === id)
+    updateItem.quantity = Number(newValue) 
+    item.quantity = updateItem.quantity
+    displayTotalQuantity()
+    displayTotalPrice()
+    updateDataCart(item)
+}
+
+function updateDataCart(item) {
+
+    const newData = JSON.stringify(item)
+    const key = `${item.id}-${item.color}`
+    localStorage.setItem(key, newData)
 }
 
 function makeDescription(item) {
